@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 9.95757, 0.269056, 9.97748 )
+
+[node name="Platform" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+width = 19.9683
+height = 0.510958
+depth = 19.9397

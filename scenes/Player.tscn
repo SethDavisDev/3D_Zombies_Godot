@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Player.gd" type="Script" id=1]
+[ext_resource path="res://Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shotgun.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.916926
+height = 1.3729
+
+[node name="Player" type="KinematicBody"]
+collision_mask = 6
+script = ExtResource( 1 )
+
+[node name="Health" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994912, -0.487862 )
+
+[node name="Shotgun" parent="Camera" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0.469125, -0.46842, -1.04137 )
+damage = 2.0

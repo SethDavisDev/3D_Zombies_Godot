@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Zombie.gd" type="Script" id=1]
+[ext_resource path="res://assets/3d/zombie_fat.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Health.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.24405, 2.00081, 1 )
+
+[node name="Fat Zombie" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="zombie_fat" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.565256, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45262, 0.220606 )
+shape = SubResource( 1 )
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

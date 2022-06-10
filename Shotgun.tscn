@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/3d/shotgun.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Shotgun.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.02
+emission_shape = 1
+emission_sphere_radius = 0.05
+direction = Vector3( 0, 0, 1 )
+spread = 34.14
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+scale_random = 0.25
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.05, 0.05, 0.05 )
+
+[node name="Shotgun" type="Spatial"]
+script = ExtResource( 2 )
+shoot_range = 10.0
+damage = 5.0
+
+[node name="shotgun_mesh" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117251, 0.717716 )
+enabled = true
+cast_to = Vector3( 0, 0, 100 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="muzzle_flash" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0146408, 0.142606, 0.769168 )
+emitting = false
+amount = 24
+lifetime = 0.08
+one_shot = true
+visibility_aabb = AABB( -0.0871881, -0.096999, -0.130019, 0.174376, 0.193998, 0.260038 )
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )

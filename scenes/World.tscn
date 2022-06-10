@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://FatZombie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/World.gd" type="Script" id=4]
+[ext_resource path="res://Level.tscn" type="PackedScene" id=5]
+
+[node name="World" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84378, 0 )
+
+[node name="Fat Zombie" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.42, 0.617907, 17.0274 )
+player_path = NodePath("../Player")
+nav_path = NodePath("../Level")
+
+[node name="Level" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00913429 )
